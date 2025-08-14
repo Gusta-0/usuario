@@ -1,10 +1,8 @@
 package com.gustavo.usuario.infrastructure.entity;
 
+import com.gustavo.usuario.infrastructure.dto.UsuarioDTO;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -17,7 +15,8 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "usuario")
-public class Usuario implements UserDetails {
+@Builder
+public class Usuario extends UsuarioDTO implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,6 +51,11 @@ public class Usuario implements UserDetails {
     @Override
     public String getUsername() {
         return email;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return UserDetails.super.isAccountNonExpired();
     }
 }
 

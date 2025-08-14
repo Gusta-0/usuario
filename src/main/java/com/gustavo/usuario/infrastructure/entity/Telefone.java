@@ -1,10 +1,7 @@
 package com.gustavo.usuario.infrastructure.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,6 +9,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name = "telefone")
+@Builder
 public class Telefone {
 
     @Id
@@ -21,11 +19,11 @@ public class Telefone {
     @Column(name = "numero", length = 10)
     private String numero;
 
-    @Column(name = "DDD", length = 3)
-    private String DDD;
+    @Column(name = "ddd", length = 3)
+    private String ddd;
 
     @ManyToOne
     @JoinColumn(name = "usuario_id")
-    private Usuario usuario;
+    private Usuario usuario_id;
 
 }

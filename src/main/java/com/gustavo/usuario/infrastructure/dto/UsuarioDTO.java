@@ -1,13 +1,18 @@
 package com.gustavo.usuario.infrastructure.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+import java.util.List;
+
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class UsuarioDTO {
-    private String email;
-    private String senha;
+    String nome;
+    String email;
+    String senha;
+    List<EnderecoDTO> enderecos;
+    List<TelefoneDTO> telefones;
 }
