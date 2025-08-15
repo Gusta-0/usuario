@@ -1,6 +1,5 @@
 package com.gustavo.usuario.infrastructure.entity;
 
-import com.gustavo.usuario.infrastructure.dto.UsuarioDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,27 +15,24 @@ import java.util.List;
 @Entity
 @Table(name = "usuario")
 @Builder
-public class Usuario extends UsuarioDTO implements UserDetails {
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(name = "nome", length = 150)
+    @Column(name = "nome", length = 100)
     private String nome;
-
     @Column(name = "email", length = 100)
     private String email;
-
-    @Column(name = "senha", length = 150)
+    @Column(name = "senha")
     private String senha;
-
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private List<Endereco> enderecos;
-
-    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id")
     private List<Telefone> telefones;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -52,10 +48,4 @@ public class Usuario extends UsuarioDTO implements UserDetails {
     public String getUsername() {
         return email;
     }
-
-    @Override
-    public boolean isAccountNonExpired() {
-        return UserDetails.super.isAccountNonExpired();
-    }
 }
-
