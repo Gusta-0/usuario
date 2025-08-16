@@ -1,5 +1,6 @@
-package com.gustavo.usuario.infrastructure.exception;
+package com.gustavo.usuario.controller;
 
+import com.gustavo.usuario.infrastructure.exception.UsuarioNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

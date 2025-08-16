@@ -1,4 +1,4 @@
-package com.gustavo.usuario.infrastructure.dto;
+package com.gustavo.usuario.business.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;

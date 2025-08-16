@@ -1,10 +1,9 @@
 package com.gustavo.usuario.controller;
 
 import com.gustavo.usuario.business.UsuarioService;
-import com.gustavo.usuario.infrastructure.dto.EnderecoDTO;
-import com.gustavo.usuario.infrastructure.dto.TelefoneDTO;
-import com.gustavo.usuario.infrastructure.dto.UsuarioDTO;
-import com.gustavo.usuario.infrastructure.entity.Usuario;
+import com.gustavo.usuario.business.dto.EnderecoDTO;
+import com.gustavo.usuario.business.dto.TelefoneDTO;
+import com.gustavo.usuario.business.dto.UsuarioDTO;
 import com.gustavo.usuario.infrastructure.security.JwtUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,8 +11,6 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
@@ -68,22 +65,21 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.atualizaTelefone(id, dto));
     }
 
-//    @PostMapping("/endereco")
-//    public ResponseEntity<EnderecoDTO> cadastaEndereco(@RequestBody EnderecoDTO dto,
-//                                                       @RequestHeader("Authorization") String token){
-//        return ResponseEntity.ok(usuarioService.cadastraEndereco(token, dto));
-//    }
-//
+    @PostMapping("/endereco")
+    public ResponseEntity<EnderecoDTO> cadastaEndereco(@RequestBody EnderecoDTO dto,
+                                                       @RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(usuarioService.cadastraEndereco(token, dto));
+    }
+
 //    @PostMapping("/telefone")
 //    public ResponseEntity<TelefoneDTO> cadastraTelefone(@RequestBody TelefoneDTO dto,
 //                                                        @RequestHeader("Authorization") String token){
-//        return ResponseEntity.ok(usuarioService.cadastraTelefone(token, dto));
+//        return ResponseEntity.ok(usuarioService.cadastrstraTelefone(token, dto));
 //    }
 //
 //    @GetMapping("/endereco/{cep}")
 //    public ResponseEntity<ViaCepDTO> buscarDadosCep(@PathVariable("cep") String cep){
 //        return ResponseEntity.ok(viaCepService.buscarDadosEndereco(cep));
 //    }
-
 
 }
