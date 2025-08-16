@@ -22,7 +22,7 @@ public class UsuarioConverter {
         return Usuario.builder()
                 .nome(dto.getNome())
                 .email(dto.getEmail())
-                .senha(dto.getSenha()) // lembre de codificar antes de salvar
+                .senha(dto.getSenha())
                 .enderecos(dto.getEnderecos() != null ?
                         paraListaEndereco(dto.getEnderecos()) : Collections.emptyList())
                 .telefones(dto.getTelefones() != null ?
@@ -111,9 +111,8 @@ public class UsuarioConverter {
 
         if (dto.getNome() != null) entity.setNome(dto.getNome());
         if (dto.getEmail() != null) entity.setEmail(dto.getEmail());
-        if (dto.getSenha() != null) entity.setSenha(dto.getSenha()); // lembre de codificar
+        if (dto.getSenha() != null) entity.setSenha(dto.getSenha());
 
-        // se quiser permitir atualização de endereços/telefones:
         if (dto.getEnderecos() != null) {
             entity.setEnderecos(paraListaEndereco(dto.getEnderecos()));
         }
