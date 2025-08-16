@@ -44,17 +44,17 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.buscarUsuarioPorEmail(email));
     }
 
-//    @DeleteMapping("/{email}")
-//    public ResponseEntity<Void> deletaUsuarioPorEmail(@PathVariable String email) {
-//        usuarioService.deletaUsuarioPorEmail(email);
-//        return ResponseEntity.ok().build();
-//    }
+    @DeleteMapping("/{email}")
+    public ResponseEntity<Void> deletaUsuarioPorEmail(@PathVariable String email) {
+        usuarioService.deletaUsuarioPorEmail(email);
+        return ResponseEntity.ok().build();
+    }
 
-//    @PutMapping
-//    public ResponseEntity<UsuarioDTO> atualizDadoUsuario(@RequestBody UsuarioDTO dto,
-//                                                         @RequestHeader("Authorization") String token) {
-//        return ResponseEntity.ok(usuarioService.atualizaDadosUsuario(token, dto));
-//    }
+    @PutMapping
+    public ResponseEntity<UsuarioDTO> atualizDadoUsuario(@RequestBody UsuarioDTO dto,
+                                                         @RequestHeader("Authorization") String token) {
+        return ResponseEntity.ok(usuarioService.atualizaDadosUsuario(token, dto));
+    }
 
     @PutMapping("/endereco")
     public ResponseEntity<EnderecoDTO> atualizaEndereco(@RequestBody EnderecoDTO dto,
@@ -73,7 +73,7 @@ public class UsuarioController {
 //                                                       @RequestHeader("Authorization") String token){
 //        return ResponseEntity.ok(usuarioService.cadastraEndereco(token, dto));
 //    }
-
+//
 //    @PostMapping("/telefone")
 //    public ResponseEntity<TelefoneDTO> cadastraTelefone(@RequestBody TelefoneDTO dto,
 //                                                        @RequestHeader("Authorization") String token){
