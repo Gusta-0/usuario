@@ -41,8 +41,8 @@ public class UsuarioService {
     public UsuarioDTO salvaUsuario(UsuarioDTO usuarioDTO) {
         emailExiste(usuarioDTO.getEmail());
         usuarioDTO.setSenha(passwordEncoder.encode(usuarioDTO.getSenha()));
-        Usuario usuario = usuarioConverter.paraUsuario(usuarioDTO);
-        return usuarioConverter.paraUsuarioDTO(
+        Usuario usuario = usuarioConverter.toEntity(usuarioDTO);
+        return usuarioConverter.toDTO(
                 usuarioRepository.save(usuario)
         );
     }
@@ -78,7 +78,7 @@ public class UsuarioService {
 
     public UsuarioDTO buscarUsuarioPorEmail(String email) {
         try {
-            return usuarioConverter.paraUsuarioDTO(
+            return usuarioConverter.toDTO(
                     usuarioRepository.findByEmail(email)
                             .orElseThrow(
                                     () -> new ResourceNotFoundException("Email não encontrado " + email)
@@ -107,10 +107,10 @@ public class UsuarioService {
                 new ResourceNotFoundException("Email não localizado"));
 
         //Mesclou os dados que recebemos na requisição DTO com os dados do banco de dados
-        Usuario usuario = usuarioConverter.updateUsuario(dto, usuarioEntity);
+        Usuario usuario = usuarioConverter.updateEntity(dto, usuarioEntity);
 
         //Salvou os dados do usuário convertido e depois pegou o retorno e converteu para UsuarioDTO
-        return usuarioConverter.paraUsuarioDTO(usuarioRepository.save(usuario));
+        return usuarioConverter.toDTO(usuarioRepository.save(usuario));
     }
 
     public EnderecoDTO atualizaEndereco(Long idEndereco, EnderecoDTO enderecoDTO) {

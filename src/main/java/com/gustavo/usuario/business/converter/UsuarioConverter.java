@@ -9,22 +9,27 @@ import com.gustavo.usuario.infrastructure.entity.Usuario;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Component
 public class UsuarioConverter {
 
-    public Usuario paraUsuario(UsuarioDTO usuarioDTO) {
+
+    public Usuario toEntity(UsuarioDTO dto) {
+        if (dto == null) return null;
+
         return Usuario.builder()
-                .nome(usuarioDTO.getNome())
-                .email(usuarioDTO.getEmail())
-                .senha(usuarioDTO.getSenha())
-                .enderecos(usuarioDTO.getEnderecos() != null ?
-                        paraListaEndereco(usuarioDTO.getEnderecos()) : null)
-                .telefones(usuarioDTO.getTelefones() != null ?
-                        paraListaTelefones(usuarioDTO.getTelefones()) : null)
+                .nome(dto.getNome())
+                .email(dto.getEmail())
+                .senha(dto.getSenha())
+                .enderecos(dto.getEnderecos() != null ?
+                        paraListaEndereco(dto.getEnderecos()) : Collections.emptyList())
+                .telefones(dto.getTelefones() != null ?
+                        paraListaTelefones(dto.getTelefones()) : Collections.emptyList())
                 .build();
     }
+
 
     public List<Endereco> paraListaEndereco(List<EnderecoDTO> enderecoDTOS) {
         List<Endereco> enderecos = new ArrayList<>();
@@ -56,15 +61,16 @@ public class UsuarioConverter {
                 .build();
     }
 
-    public UsuarioDTO paraUsuarioDTO(Usuario usuarioDTO) {
+    public UsuarioDTO toDTO(Usuario entity) {
+        if (entity == null) return null;
+
         return UsuarioDTO.builder()
-                .nome(usuarioDTO.getNome())
-                .email(usuarioDTO.getEmail())
-                .senha(usuarioDTO.getSenha())
-                .enderecos(usuarioDTO.getEnderecos() != null ?
-                        paraListaEnderecoDTO(usuarioDTO.getEnderecos()) : null)
-                .telefones(usuarioDTO.getTelefones() != null ?
-                        paraListaTelefonesDTO(usuarioDTO.getTelefones()) : null)
+                .nome(entity.getNome())
+                .email(entity.getEmail())
+                .enderecos(entity.getEnderecos() != null ?
+                        paraListaEnderecoDTO(entity.getEnderecos()) : Collections.emptyList())
+                .telefones(entity.getTelefones() != null ?
+                        paraListaTelefonesDTO(entity.getTelefones()) : Collections.emptyList())
                 .build();
     }
 
@@ -100,15 +106,21 @@ public class UsuarioConverter {
                 .build();
     }
 
-    public Usuario updateUsuario(UsuarioDTO usuarioDTO, Usuario entity) {
-        return Usuario.builder()
-                .nome(usuarioDTO.getNome() != null ? usuarioDTO.getNome() : entity.getNome())
-                .id(entity.getId())
-                .senha(usuarioDTO.getSenha() != null ? usuarioDTO.getSenha() : entity.getSenha())
-                .email(usuarioDTO.getEmail() != null ? usuarioDTO.getEmail() : entity.getEmail())
-                .enderecos(entity.getEnderecos())
-                .telefones(entity.getTelefones())
-                .build();
+    public Usuario updateEntity(UsuarioDTO dto, Usuario entity) {
+        if (dto == null || entity == null) return entity;
+
+        if (dto.getNome() != null) entity.setNome(dto.getNome());
+        if (dto.getEmail() != null) entity.setEmail(dto.getEmail());
+        if (dto.getSenha() != null) entity.setSenha(dto.getSenha());
+
+        if (dto.getEnderecos() != null) {
+            entity.setEnderecos(paraListaEndereco(dto.getEnderecos()));
+        }
+        if (dto.getTelefones() != null) {
+            entity.setTelefones(paraListaTelefones(dto.getTelefones()));
+        }
+
+        return entity;
     }
 
     public Endereco updateEndereco(EnderecoDTO dto, Endereco entity) {
