@@ -90,9 +90,11 @@ public class UsuarioService {
     }
 
 
-    public void deletaUsuarioPorEmail(String email) {
-
+    public String deletaUsuarioPorEmail(String email) {
+        usuarioRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("Email não encontrado " + email));
         usuarioRepository.deleteByEmail(email);
+        return "Usuário deletado com sucesso: " + email;
     }
 
     public UsuarioDTO atualizaDadosUsuario(String token, UsuarioDTO dto) {
