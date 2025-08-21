@@ -71,15 +71,9 @@ public class UsuarioController {
         return ResponseEntity.ok(usuarioService.cadastraEndereco(token, dto));
     }
 
-//    @PostMapping("/telefone")
-//    public ResponseEntity<TelefoneDTO> cadastraTelefone(@RequestBody TelefoneDTO dto,
-//                                                        @RequestHeader("Authorization") String token){
-//        return ResponseEntity.ok(usuarioService.cadastrstraTelefone(token, dto));
-//    }
-//
-//    @GetMapping("/endereco/{cep}")
-//    public ResponseEntity<ViaCepDTO> buscarDadosCep(@PathVariable("cep") String cep){
-//        return ResponseEntity.ok(viaCepService.buscarDadosEndereco(cep));
-//    }
-
+    @PostMapping("/telefone")
+    public ResponseEntity<TelefoneDTO> cadastraTelefone(@RequestBody TelefoneDTO dto,
+                                                        @RequestHeader("Authorization") String token){
+        return ResponseEntity.ok(usuarioService.cadastraTelefone(token, dto));
+    }
 }

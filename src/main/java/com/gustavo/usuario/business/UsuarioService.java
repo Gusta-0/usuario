@@ -98,20 +98,15 @@ public class UsuarioService {
     }
 
     public UsuarioDTO atualizaDadosUsuario(String token, UsuarioDTO dto) {
-        //Aqui buscamos o email do usuário através do token (tirar a obrigatoriedade do email)
         String email = jwtUtil.extrairEmailToken(token.substring(7));
 
-        //Criptografia de senha
         dto.setSenha(dto.getSenha() != null ? passwordEncoder.encode(dto.getSenha()) : null);
 
-        //Busca os dados do usuário no banco de dados
         Usuario usuarioEntity = usuarioRepository.findByEmail(email).orElseThrow(() ->
                 new ResourceNotFoundException("Email não localizado"));
 
-        //Mesclou os dados que recebemos na requisição DTO com os dados do banco de dados
         Usuario usuario = usuarioConverter.updateEntity(dto, usuarioEntity);
 
-        //Salvou os dados do usuário convertido e depois pegou o retorno e converteu para UsuarioDTO
         return usuarioConverter.toDTO(usuarioRepository.save(usuario));
     }
 
