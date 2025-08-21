@@ -126,12 +126,4 @@ public class UsuarioController {
         return ResponseEntity.ok().build();
     }
 
-<<<<<<< HEAD
-    @PostMapping("/telefone")
-    public ResponseEntity<TelefoneDTO> cadastraTelefone(@RequestBody TelefoneDTO dto,
-                                                        @RequestHeader("Authorization") String token){
-        return ResponseEntity.ok(usuarioService.cadastraTelefone(token, dto));
-    }
-=======
->>>>>>> 2e83e79 (DocumentaÃou a api com o Swagger)
 }

@@ -37,13 +37,11 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/usuario/login").permitAll()
-<<<<<<< HEAD
                         .requestMatchers("/h2-console/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuario").permitAll()
                         .requestMatchers("/usuario/**").authenticated()
                         .anyRequest().authenticated()
-=======
                         .requestMatchers(
                                 "/swagger-ui/**",
                                 "/v3/api-docs/**",
@@ -56,7 +54,6 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/usuario").permitAll() // Permite acesso ao endpoint POST /usuario sem autenticação
                         .requestMatchers("/usuario/**").authenticated() // Requer autenticação para qualquer endpoint que comece com /usuario/
                         .anyRequest().authenticated() // Requer autenticação para todas as outras requisições
->>>>>>> 2e83e79 (DocumentaÃou a api com o Swagger)
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
