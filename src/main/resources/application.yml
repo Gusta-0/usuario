@@ -12,7 +12,7 @@ spring:
   datasource:
     url: jdbc:postgresql://db:5432/db_usuario
     driver-class-name: org.postgresql.Driver
-    username: postgres
+    username: admin
     password: 1234
 
   jpa:

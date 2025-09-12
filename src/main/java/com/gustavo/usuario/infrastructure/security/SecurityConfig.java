@@ -48,8 +48,6 @@ public class SecurityConfig {
                                 "/swagger-resources/**",
                                 "/webjars/**"
                         ).permitAll()
-
-                        // Endpoints que exigem autenticação
                         .requestMatchers("/usuario/**").authenticated()
                         .anyRequest().authenticated()
                 )
