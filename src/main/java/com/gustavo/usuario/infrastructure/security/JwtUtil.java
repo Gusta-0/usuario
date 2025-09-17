@@ -13,7 +13,7 @@ import java.util.Date;
 @Service
 public class JwtUtil {
 
-    private final SecretKey secretKey;
+      final SecretKey secretKey;
 
     public JwtUtil() {
         this.secretKey = Keys.secretKeyFor(SignatureAlgorithm.HS256);
