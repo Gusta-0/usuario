@@ -2,9 +2,6 @@ package com.gustavo.usuario.business;
 
 
 import com.gustavo.usuario.business.converter.UsuarioConverter;
-import com.gustavo.usuario.business.dto.EnderecoDTO;
-import com.gustavo.usuario.business.dto.TelefoneDTO;
-import com.gustavo.usuario.business.dto.UsuarioDTO;
 import com.gustavo.usuario.infrastructure.entity.Endereco;
 import com.gustavo.usuario.infrastructure.entity.Telefone;
 import com.gustavo.usuario.infrastructure.entity.Usuario;
@@ -29,13 +26,13 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UsuarioService {
 
-    private final UsuarioRepository usuarioRepository;
-    private final UsuarioConverter usuarioConverter;
-    private final PasswordEncoder passwordEncoder;
-    private final JwtUtil jwtUtil;
-    private final AuthenticationManager authenticationManager;
-    private final EnderecoRepository enderecoRepository;
-    private final TelefoneRepository telefoneRepository;
+      final UsuarioRepository usuarioRepository;
+      final UsuarioConverter usuarioConverter;
+      final PasswordEncoder passwordEncoder;
+      final JwtUtil jwtUtil;
+      final AuthenticationManager authenticationManager;
+      final EnderecoRepository enderecoRepository;
+      final TelefoneRepository telefoneRepository;
 
 
     public UsuarioDTO salvaUsuario(UsuarioDTO usuarioDTO) {

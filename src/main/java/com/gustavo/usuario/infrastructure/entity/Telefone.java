@@ -14,11 +14,11 @@ public class Telefone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+      Long id;
     @Column(name = "numero", length = 10)
-    private String numero;
+      String numero;
     @Column(name = "ddd", length = 3)
-    private String ddd;
+      String ddd;
     @Column(name = "usuario_id")
-    private Long usuario_id;
+      Long usuario_id;
 }

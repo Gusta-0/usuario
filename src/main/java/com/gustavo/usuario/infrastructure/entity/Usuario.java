@@ -19,18 +19,18 @@ public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+      Long id;
     @Column(length = 100)
-    private String nome;
+      String nome;
     @Column(length = 100)
-    private String email;
-    private String senha;
+      String email;
+      String senha;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private List<Endereco> enderecos;
+      List<Endereco> enderecos;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "usuario_id", referencedColumnName = "id")
-    private List<Telefone> telefones;
+      List<Telefone> telefones;
 
 
     @Override

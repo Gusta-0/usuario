@@ -1,8 +1,5 @@
 package com.gustavo.usuario.business.converter;
 
-import com.gustavo.usuario.business.dto.EnderecoDTO;
-import com.gustavo.usuario.business.dto.TelefoneDTO;
-import com.gustavo.usuario.business.dto.UsuarioDTO;
 import com.gustavo.usuario.infrastructure.entity.Endereco;
 import com.gustavo.usuario.infrastructure.entity.Telefone;
 import com.gustavo.usuario.infrastructure.entity.Usuario;

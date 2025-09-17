@@ -1,9 +1,6 @@
 package com.gustavo.usuario.controller;
 
 import com.gustavo.usuario.business.UsuarioService;
-import com.gustavo.usuario.business.dto.EnderecoDTO;
-import com.gustavo.usuario.business.dto.TelefoneDTO;
-import com.gustavo.usuario.business.dto.UsuarioDTO;
 import com.gustavo.usuario.infrastructure.security.JwtUtil;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -19,9 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @Tag(name = "Usuario", description = "Cadastro e login de usuários")
 public class UsuarioController {
 
-    private final UsuarioService usuarioService;
-    private final AuthenticationManager authenticationManager;
-    private final JwtUtil jwtUtil;
+      final UsuarioService usuarioService;
+      final AuthenticationManager authenticationManager;
+      final JwtUtil jwtUtil;
 
     @PostMapping
     @Operation(summary = "Salva Usuários", description = "Cria um novo usuário no sistema")
